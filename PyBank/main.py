@@ -1,9 +1,13 @@
+#NOTE: Used https://stackoverflow.com/questions/46965192/python-how-can-i-find-difference-between-two-rows-of-same-column-using-loop-in
+# for reference in developing logic for this HW
+
 # Imports
 import os
 import csv
 
-# Define path to source data
+# Define path to source data/output file
 csvpath = os.path.join('Resources','budget_data.csv')
+outputpath = os.path.join('analysis','financial_analysis.txt')
 
 # Create initial counter for total # of months in file
 total_months = 0
@@ -69,3 +73,14 @@ print(f"Total: ${int(total_profit_loss)}")
 print(f"Average Change: ${average_revenue_change_format}")
 print(f"Greatest Increase in Profits: {max_change_date_format} (${int(max_change)})")
 print(f"Greatest Decrease in Profits: {min_change_date_format} (${int(min_change)})")
+
+
+# Output analysis results to text file
+with open(outputpath, 'w', newline='') as text_file:
+    text_file.write("Financial Analysis\n---------------------------\n")
+    text_file.write(f"Total Months: {total_months}\n")
+    text_file.write(f"Total: ${int(total_profit_loss)}\n")
+    text_file.write(f"Average Change: ${average_revenue_change_format}\n")
+    text_file.write(f"Greatest Increase in Profits: {max_change_date_format} (${int(max_change)})\n")
+    text_file.write(f"Greatest Decrease in Profits: {min_change_date_format} (${int(min_change)})")
+    
