@@ -50,10 +50,17 @@ max_change = max(revenue_change_values)
 # Based on how the monthly changes were calculated, the changes tied to each row correspond to the subsequent month
 # Thus, the max change date is the index in the date list of the max_change + 1
 max_change_date = date_values[(revenue_change_values.index(max_change))+1]
-# reformat max_change_date to "Mmm-YYYY" instead of "Mmm-YY"
+# reformat max_change_date to "Mmm-YYYY" instead of "Mmm-YY" using list properties of string
 max_change_date_format = max_change_date[:4] + "20" + max_change_date[-2:]
 
 # Calculate minimum change
+min_change = min(revenue_change_values)
+# To get the date, reference the date list created in csvreader loop
+# Based on how the monthly changes were calculated, the changes tied to each row correspond to the subsequent month
+# Thus, the max change date is the index in the date list of the max_change + 1
+min_change_date = date_values[(revenue_change_values.index(min_change))+1]
+# reformat min_change_date to "Mmm-YYYY" instead of "Mmm-YY" using list properties of string
+min_change_date_format = min_change_date[:4] + "20" + min_change_date[-2:]
 
 # Print output results
 print("Financial Analysis\n---------------------------")
@@ -61,3 +68,4 @@ print(f"Total Months: {total_months}")
 print(f"Total: ${int(total_profit_loss)}")
 print(f"Average Change: ${average_revenue_change_format}")
 print(f"Greatest Increase in Profits: {max_change_date_format} (${int(max_change)})")
+print(f"Greatest Decrease in Profits: {min_change_date_format} (${int(min_change)})")
