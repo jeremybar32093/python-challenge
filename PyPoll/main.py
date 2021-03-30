@@ -35,9 +35,18 @@ for candidate in candidates:
         for row in csvreader:
             if row[2] == candidate:
                 candidate_vote_count += 1
+    # Append number of votes for each candidate to list
     candidate_number_votes.append(candidate_vote_count)
-    candidate_percent_votes.append(candidate_vote_count / total_votes)
+    # Append percent votes formatted to 3 decimal places to list
+    candidate_percent_votes.append("{:.3%}".format((candidate_vote_count / total_votes)))
 
 # print output results
 print("Election Results\n----------------------------")
 print(f"Total Votes: {total_votes}\n----------------------------")
+
+# Iterate through number of candidates and print out #/% of votes
+for i in range(0,len(candidates)):
+    print(f"{candidates[i]}: {candidate_percent_votes[i]} ({candidate_number_votes[i]})")
+
+print("\n----------------------------")
+
