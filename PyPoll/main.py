@@ -48,5 +48,12 @@ print(f"Total Votes: {total_votes}\n----------------------------")
 for i in range(0,len(candidates)):
     print(f"{candidates[i]}: {candidate_percent_votes[i]} ({candidate_number_votes[i]})")
 
-print("\n----------------------------")
+print("----------------------------")
+
+# Calculate and print the winner
+most_votes = max(candidate_number_votes)
+winning_candidate = candidates[candidate_number_votes.index(most_votes)]
+print(f"Winner: {winning_candidate}")
+
+print("----------------------------")
 
