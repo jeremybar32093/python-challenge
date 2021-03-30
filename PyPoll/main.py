@@ -57,3 +57,17 @@ print(f"Winner: {winning_candidate}")
 
 print("----------------------------")
 
+
+# Output analysis results to text file
+with open(outputpath, 'w', newline='') as text_file:
+    text_file.write("Election Results\n---------------------------\n")
+    text_file.write(f"Total Votes: {total_votes}\n----------------------------\n")
+    # Loop through and output list of candidates
+    for i in range(0,len(candidates)):
+        text_file.write(f"{candidates[i]}: {candidate_percent_votes[i]} ({candidate_number_votes[i]})\n")
+    text_file.write("----------------------------\n")
+    text_file.write(f"Winner: {winning_candidate}\n")
+    text_file.write("----------------------------")
+
+
+
