@@ -7,6 +7,9 @@ outputpath = os.path.join('analysis','election_analysis.txt')
 
 # Create initial variables
 total_votes = 0
+candidates = []
+candidate_number_votes = []
+candidate_percent_votes = []
 
 with open(csvpath) as csvfile:
     # Initiate csvreader object
@@ -17,6 +20,23 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         # total votes in file
         total_votes += 1
+        # obtain unique list of candidates
+        if row[2] not in candidates:
+            candidates.append(row[2])
+
+# Now, iterate through each unique candidate, loop through the CSV file again and count the number of votes for each candidate
+# Append this result into its own list
+# Also, calculate the percentage votes for each candidate
+for candidate in candidates:
+    candidate_vote_count = 0
+    with open(csvpath) as csvfile:
+        csvreader = csv.reader(csvfile,delimiter=',')
+        next(csvreader)
+        for row in csvreader:
+            if row[2] == candidate:
+                candidate_vote_count += 1
+    candidate_number_votes.append(candidate_vote_count)
+    candidate_percent_votes.append(candidate_vote_count / total_votes)
 
 # print output results
 print("Election Results\n----------------------------")
