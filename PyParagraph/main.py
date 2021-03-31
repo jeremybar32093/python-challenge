@@ -44,3 +44,9 @@ print(f"Average Letter Count: {average_letter_count_format}")
 print(f"Average Sentence Length: {average_sentence_length_format}")
 
 # Write outputs of analysis to text file
+with open(outputpath, 'w', newline='') as text_file:
+    text_file.write("Paragraph Analysis\n-------------------------\n")
+    text_file.write(f"Approximate Word Count: {number_words}\n")
+    text_file.write(f"Approximate Sentence Count: {number_sentences}\n")
+    text_file.write(f"Average Letter Count: {average_letter_count_format}\n")
+    text_file.write(f"Average Sentence Length: {average_sentence_length_format}")
