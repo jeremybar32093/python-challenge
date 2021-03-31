@@ -15,10 +15,32 @@ number_words = len(words)
 sentences = re.split("(?<=[.!?]) +", paragraph)
 number_sentences = len(sentences)
 
+# Create loop to count how many letters are in the paragraph
+# Then divide by number of words to get average letter count
+
+# First, create list defining letters - will compare characters in paragraph string to see if they are in this list
+letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+# counter variable to count number of letters in paragraph string
+letter_count = 0
+# iterate through each character in paragraph, count letter if it falls within above defined list
+for letter in paragraph:
+    if letter in letters:
+        letter_count += 1
+
+# calculate average letter count by doing letter count / number of words
+average_letter_count = letter_count / number_words
+average_letter_count_format = "{:.1f}".format(average_letter_count)
+
+# Calculate average sentence length by doing number of words / number of sentences
+average_sentence_length = number_words / number_sentences
+average_sentence_length_format = "{:.1f}".format(average_sentence_length)
+
 # Print outputs of analysis
 print("Paragraph Analysis\n-------------------------")
 print(f"Approximate Word Count: {number_words}")
 print(f"Approximate Sentence Count: {number_sentences}")
-
+print(f"Average Letter Count: {average_letter_count_format}")
+print(f"Average Sentence Length: {average_sentence_length_format}")
 
 # Write outputs of analysis to text file
