@@ -1,6 +1,9 @@
 import csv
 import os
 
+# NOTE: referenced following link for logic/approach
+# https://www.geeksforgeeks.org/python-save-list-to-csv/
+
 # Define path to source data/output file
 csvpath = os.path.join('Resources','employee_data.csv')
 outputpath = os.path.join('analysis','employee_converted_output.txt')
@@ -104,4 +107,13 @@ with open(csvpath) as csvfile:
         # Lastly, add individual record list to output list - to be used to write new reformatted file
         output_rows.append(record)
 
-print(output_rows)
+# List of output rows is created
+# Now, write the reformatted list to an updated output file
+# File called 'employee_converted_output.txt' and located in analysis folder
+with open(outputpath,'w',newline='') as csvfile:
+    # Initiate csvwriter object
+    csvwriter = csv.writer(csvfile)
+    # Write header rows
+    csvwriter.writerow(output_fields)
+    # Write data
+    csvwriter.writerows(output_rows)
