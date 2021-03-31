@@ -11,9 +11,14 @@ paragraph = "The morning had dawned clear and cold, with a crispness that hinted
 words = paragraph.split()
 number_words = len(words)
 
+# Split using regex to determine end of sentence
+sentences = re.split("(?<=[.!?]) +", paragraph)
+number_sentences = len(sentences)
+
 # Print outputs of analysis
 print("Paragraph Analysis\n-------------------------")
 print(f"Approximate Word Count: {number_words}")
+print(f"Approximate Sentence Count: {number_sentences}")
 
 
 # Write outputs of analysis to text file
